@@ -19,6 +19,6 @@ If you send a GET request to the API using just the users endpoint `localhost:30
 
 ### GET one by ID
 
-If you send a GET request to the API using the users endpoint with another segment after it, the API will attempt to use whatever is in that second segment as a MongoDB ID and will attempt to find a matching user and return that user to the client.
+If you send a GET request to the API using the users endpoint with another segment after it `localhost:3000/users/640124943e73f087b6e5e386` the API will attempt to use whatever is in that second segment as a MongoDB ID and will attempt to find a matching user and return that user to the client.
 
 This will be added to over the coming days.
