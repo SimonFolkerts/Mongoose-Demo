@@ -3,6 +3,7 @@
 // import packages that make everytihing work
 const express = require("express");
 const mongoose = require("mongoose");
+const { findOneAndDelete, findByIdAndDelete } = require("./models/user");
 require("dotenv").config();
 
 // import Models (User, Article, etc). These are JavaScript representations of the collections of data
@@ -34,7 +35,7 @@ app.get("/users/", async (req, res) => {
   res.json(userArray);
 });
 
-// get users by id
+// get a user by id
 /* this route matches with any request that is a GET request to localhost:3000/users/* 
 In this case, * can be anything as it is a dynameic segment, and we will assume it is a user ID. Since we are using MongoDB, each user will have been
 assigned a unique id by the database system. If we send a reqeust up with one of these in the second segment of the url,
@@ -64,7 +65,7 @@ app.post("/users/", async (req, res) => {
   res.json(newUser);
 });
 
-// update user
+// update a user
 /* updating a user can be done in several ways, the way shown here is quite simple, but has three parts.
 first we need to find and retreive the user we want to update. Then we edit their document (it's an object so we
 can just use regular object notation using the membership operator '.'). Finally we save the edited user. Running save
@@ -81,6 +82,15 @@ app.put("/users/:userId", async (req, res) => {
 
   // and then we can send that variable back to the client if we like
   res.json(updatedUser);
+});
+
+// delete a user by id
+app.delete("/users/:userId", async (req, res) => {
+  // use findByIdAndDelete to delete the user from the database. This returns the user that is to be deleted
+  const deletedUser = await User.findByIdAndDelete(req.params.userId);
+
+  // we can send the to be deleted user to the client if we like
+  res.json(deletedUser);
 });
 // ----------------------------------------------------------------
 
