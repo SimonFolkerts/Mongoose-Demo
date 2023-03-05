@@ -3,7 +3,6 @@
 // import packages that make everytihing work
 const express = require("express");
 const mongoose = require("mongoose");
-const { findOneAndDelete, findByIdAndDelete } = require("./models/user");
 require("dotenv").config();
 
 // import Models (User, Article, etc). These are JavaScript representations of the collections of data
