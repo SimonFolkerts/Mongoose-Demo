@@ -73,7 +73,8 @@ app.put("/users/:userId", async (req, res) => {
   // get the user document to be edited from the database using findById()
   const userToUpdate = await User.findById(req.params.userId);
 
-  // edit the user document (here we replace the user email address with the one from the request body)
+  // edit the user document (here we replace the user email address with the one from the request body).
+  // The logic that goes here is entirely dependent on how your use-cases handle editing. The logic is up to you.
   userToUpdate.email = req.body.email;
 
   // finally we save the edited user back to the database. This also returns the user, so we catch it in a variable
