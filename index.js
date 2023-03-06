@@ -113,7 +113,7 @@ app.use((error, req, res, next) => {
 app.use((req, res) => {
   // .use and no route means this matches with anything that makes it this far
   console.log("invalid route");
-  res.send("404, invalid route");
+  res.status(404).send("404, invalid route");
 });
 // ----------------------------------------------------------------
 // DB CONNECTION
